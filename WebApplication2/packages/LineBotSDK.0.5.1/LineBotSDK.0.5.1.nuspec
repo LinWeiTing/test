@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>LineBotSDK</id>
+    <version>0.5.1</version>
+    <title>LineBotSDK</title>
+    <authors>David Dong</authors>
+    <owners>David Dong</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>LineBot SDK for .NET (Line@ Messaging API supported)</description>
+    <summary>LineBot SDK for .NET</summary>
+    <releaseNotes>Bug fix, support ImageMap</releaseNotes>
+    <copyright>Copyright © isRock</copyright>
+    <tags>LineBot</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="Newtonsoft.Json" version="8.0.3" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
