@@ -13,21 +13,23 @@ namespace WebApplication2.Controllers
         public IHttpActionResult POST()
         {
             string ChannelAccessToken = "IltokqK2tMHOVqcWbuSU2FwuxFJpKednm3TNjcALhypZLJlegZzf9RFTWRSmsPnLfbcMHQBY32uarMSkWKY8AARV8N8+Bk77cbzyDhobwTg2H6J2BGVqZsjrxxbmjYLuIdnUab8CEE13qydXJlWcvQdB04t89/1O/w1cDnyilFU=";
-            
-            //建立actions，作為ButtonTemplate的用戶回覆行為
+
+            ///建立actions，作為ButtonTemplate的用戶回覆行為
             var actions = new List<isRock.LineBot.TemplateActionBase>();
-            actions.Add(new isRock.LineBot.MessageActon() { label = "點選這邊等同用戶直接輸入某訊息", text = "/例如這樣" });
-            actions.Add(new isRock.LineBot.UriActon() { label = "點這邊開啟網頁", uri = new Uri("http://www.google.com") });
-            actions.Add(new isRock.LineBot.PostbackActon() { label = "點這邊發生postack", data = "abc=aaa&def=111" });
+            actions.Add(new isRock.LineBot.MessageActon() { label = "標題-文字回覆", text = "回覆文字" });
+            actions.Add(new isRock.LineBot.UriActon() { label = "標題-開啟URL", uri = new Uri("http://www.google.com") });
+            actions.Add(new isRock.LineBot.PostbackActon() { label = "標題-發生postack", data = "abc=aaa&def=111" });
+
+            //單一Button Template Message
             var ButtonTemplate = new isRock.LineBot.ButtonsTemplate()
             {
-                altText = "替代文字(在無法顯示Button Template的時候顯示)",
-                text = "123",
-                title = "456",
-            //設定圖片
+                text = "ButtonsTemplate文字訊息",
+                title = "ButtonsTemplate標題",
+                //設定圖片
                 thumbnailImageUrl = new Uri("https://scontent-tpe1-1.xx.fbcdn.net/v/t31.0-8/15800635_1324407647598805_917901174271992826_o.jpg?oh=2fe14b080454b33be59cdfea8245406d&oe=591D5C94"),
-            actions = actions //設定回覆動作
+                actions = actions //設定回覆動作
             };
+
             try
             {
                 //取得 http Post RawData(should be JSON)
