@@ -41,7 +41,7 @@ namespace WebApplication2.Controllers
                 Message = "你說了:" + ReceivedMessage.events[0].message.text;
                 //回覆用戶
                 isRock.LineBot.Utility.ReplyMessage(ReceivedMessage.events[0].replyToken, Message, ChannelAccessToken);
-                isRock.LineBot.Utility.PushTemplateMessage(ReceivedMessage.events[0].replyToken, ButtonTemplate, ChannelAccessToken);
+                isRock.LineBot.Utility.PushTemplateMessage(ReceivedMessage.events[0].source.userId, ButtonTemplate, ChannelAccessToken);
                 //回覆API OK
                 return Ok();
             }
