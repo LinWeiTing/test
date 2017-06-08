@@ -105,6 +105,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="cctuan_photo.jpg" />
     <Content Include="Global.asax" />
     <Content Include="index.htm" />
     <Content Include="Web.config" />

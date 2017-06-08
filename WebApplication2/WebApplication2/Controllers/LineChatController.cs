@@ -26,7 +26,7 @@ namespace WebApplication2.Controllers
                 text = "ButtonsTemplate文字訊息",
                 title = "ButtonsTemplate標題",
                 //設定圖片
-                thumbnailImageUrl = new Uri("http://140.124.72.4/img/lab/cctuan_photo.jpg"),
+                thumbnailImageUrl = new Uri("https://linechart-1.apphb.com/cctuan_photo.jpg"),
                 actions = actions //設定回覆動作
             };
 
