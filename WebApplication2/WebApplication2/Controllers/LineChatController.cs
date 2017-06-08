@@ -17,7 +17,7 @@ namespace WebApplication2.Controllers
             ///建立actions，作為ButtonTemplate的用戶回覆行為
             var actions = new List<isRock.LineBot.TemplateActionBase>();
             actions.Add(new isRock.LineBot.MessageActon() { label = "標題-文字回覆", text = "回覆文字" });
-            actions.Add(new isRock.LineBot.UriActon() { label = "標題-開啟URL", uri = new Uri("http://www.google.com") });
+            actions.Add(new isRock.LineBot.UriActon() { label = "標題-開啟URL", uri = new Uri("http://140.124.72.4/professor.php") });
             actions.Add(new isRock.LineBot.PostbackActon() { label = "標題-發生postack", data = "abc=aaa&def=111" });
 
             //單一Button Template Message
@@ -26,7 +26,7 @@ namespace WebApplication2.Controllers
                 text = "ButtonsTemplate文字訊息",
                 title = "ButtonsTemplate標題",
                 //設定圖片
-                thumbnailImageUrl = new Uri("https://scontent-tpe1-1.xx.fbcdn.net/v/t31.0-8/15800635_1324407647598805_917901174271992826_o.jpg?oh=2fe14b080454b33be59cdfea8245406d&oe=591D5C94"),
+                thumbnailImageUrl = new Uri("http://140.124.72.4/img/lab/cctuan_photo.jpg"),
                 actions = actions //設定回覆動作
             };
 
