@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbc77f7eb3a51848168c8ca78d00e74488Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="RestaurantDataBaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="city" EntityType="dbc77f7eb3a51848168c8ca78d00e74488Model.city" />
+    <EntitySet Name="county" EntityType="dbc77f7eb3a51848168c8ca78d00e74488Model.county" />
+    <EntitySet Name="provider" EntityType="dbc77f7eb3a51848168c8ca78d00e74488Model.provider" />
+    <EntitySet Name="restaurant" EntityType="dbc77f7eb3a51848168c8ca78d00e74488Model.restaurant" />
+    <AssociationSet Name="FK_city_county" Association="dbc77f7eb3a51848168c8ca78d00e74488Model.FK_city_county">
+      <End Role="county" EntitySet="county" />
+      <End Role="city" EntitySet="city" />
+    </AssociationSet>
+    <AssociationSet Name="FK_restaurant_city" Association="dbc77f7eb3a51848168c8ca78d00e74488Model.FK_restaurant_city">
+      <End Role="city" EntitySet="city" />
+      <End Role="restaurant" EntitySet="restaurant" />
+    </AssociationSet>
+    <AssociationSet Name="FK_restaurant_provider" Association="dbc77f7eb3a51848168c8ca78d00e74488Model.FK_restaurant_provider">
+      <End Role="provider" EntitySet="provider" />
+      <End Role="restaurant" EntitySet="restaurant" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="city">
+    <Key>
+      <PropertyRef Name="cityId" />
+    </Key>
+    <Property Name="cityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cityName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="countyId" Type="Int32" />
+    <NavigationProperty Name="county" Relationship="dbc77f7eb3a51848168c8ca78d00e74488Model.FK_city_county" FromRole="city" ToRole="county" />
+    <NavigationProperty Name="restaurant" Relationship="dbc77f7eb3a51848168c8ca78d00e74488Model.FK_restaurant_city" FromRole="city" ToRole="restaurant" />
+  </EntityType>
+  <EntityType Name="county">
+    <Key>
+      <PropertyRef Name="countyId" />
+    </Key>
+    <Property Name="countyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="countyName" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="city" Relationship="dbc77f7eb3a51848168c8ca78d00e74488Model.FK_city_county" FromRole="county" ToRole="city" />
+  </EntityType>
+  <EntityType Name="provider">
+    <Key>
+      <PropertyRef Name="providerId" />
+    </Key>
+    <Property Name="providerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="providerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="providerPhone" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+    <Property Name="providerLineId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="restaurant" Relationship="dbc77f7eb3a51848168c8ca78d00e74488Model.FK_restaurant_provider" FromRole="provider" ToRole="restaurant" />
+  </EntityType>
+  <EntityType Name="restaurant">
+    <Key>
+      <PropertyRef Name="restaurantId" />
+    </Key>
+    <Property Name="restaurantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="restaurantName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="restaurantAddress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="restaurantPhone" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="restaurantNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="restaurantPicture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="restaurantURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="cityId" Type="Int32" />
+    <Property Name="providerId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="city" Relationship="dbc77f7eb3a51848168c8ca78d00e74488Model.FK_restaurant_city" FromRole="restaurant" ToRole="city" />
+    <NavigationProperty Name="provider" Relationship="dbc77f7eb3a51848168c8ca78d00e74488Model.FK_restaurant_provider" FromRole="restaurant" ToRole="provider" />
+  </EntityType>
+  <Association Name="FK_city_county">
+    <End Type="dbc77f7eb3a51848168c8ca78d00e74488Model.county" Role="county" Multiplicity="0..1" />
+    <End Type="dbc77f7eb3a51848168c8ca78d00e74488Model.city" Role="city" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="county">
+        <PropertyRef Name="countyId" />
+      </Principal>
+      <Dependent Role="city">
+        <PropertyRef Name="countyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_restaurant_city">
+    <End Type="dbc77f7eb3a51848168c8ca78d00e74488Model.city" Role="city" Multiplicity="0..1" />
+    <End Type="dbc77f7eb3a51848168c8ca78d00e74488Model.restaurant" Role="restaurant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="city">
+        <PropertyRef Name="cityId" />
+      </Principal>
+      <Dependent Role="restaurant">
+        <PropertyRef Name="cityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_restaurant_provider">
+    <End Type="dbc77f7eb3a51848168c8ca78d00e74488Model.provider" Role="provider" Multiplicity="1" />
+    <End Type="dbc77f7eb3a51848168c8ca78d00e74488Model.restaurant" Role="restaurant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="provider">
+        <PropertyRef Name="providerId" />
+      </Principal>
+      <Dependent Role="restaurant">
+        <PropertyRef Name="providerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

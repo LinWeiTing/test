@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbc77f7eb3a51848168c8ca78d00e74488Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="city">
+    <Key>
+      <PropertyRef Name="cityId" />
+    </Key>
+    <Property Name="cityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cityName" Type="nvarchar" MaxLength="20" />
+    <Property Name="countyId" Type="int" />
+  </EntityType>
+  <EntityType Name="county">
+    <Key>
+      <PropertyRef Name="countyId" />
+    </Key>
+    <Property Name="countyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="countyName" Type="nchar" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="provider">
+    <Key>
+      <PropertyRef Name="providerId" />
+    </Key>
+    <Property Name="providerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="providerName" Type="nvarchar" MaxLength="50" />
+    <Property Name="providerPhone" Type="nchar" MaxLength="12" />
+    <Property Name="providerLineId" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="restaurant">
+    <Key>
+      <PropertyRef Name="restaurantId" />
+    </Key>
+    <Property Name="restaurantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="restaurantName" Type="nvarchar" MaxLength="50" />
+    <Property Name="restaurantAddress" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="restaurantPhone" Type="nvarchar" MaxLength="12" />
+    <Property Name="restaurantNote" Type="nvarchar(max)" />
+    <Property Name="restaurantPicture" Type="nvarchar(max)" />
+    <Property Name="restaurantURL" Type="nvarchar(max)" />
+    <Property Name="cityId" Type="int" />
+    <Property Name="providerId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_city_county">
+    <End Role="county" Type="Self.county" Multiplicity="0..1" />
+    <End Role="city" Type="Self.city" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="county">
+        <PropertyRef Name="countyId" />
+      </Principal>
+      <Dependent Role="city">
+        <PropertyRef Name="countyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_restaurant_city">
+    <End Role="city" Type="Self.city" Multiplicity="0..1" />
+    <End Role="restaurant" Type="Self.restaurant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="city">
+        <PropertyRef Name="cityId" />
+      </Principal>
+      <Dependent Role="restaurant">
+        <PropertyRef Name="cityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_restaurant_provider">
+    <End Role="provider" Type="Self.provider" Multiplicity="1" />
+    <End Role="restaurant" Type="Self.restaurant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="provider">
+        <PropertyRef Name="providerId" />
+      </Principal>
+      <Dependent Role="restaurant">
+        <PropertyRef Name="providerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbc77f7eb3a51848168c8ca78d00e74488ModelStoreContainer">
+    <EntitySet Name="city" EntityType="Self.city" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="county" EntityType="Self.county" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="provider" EntityType="Self.provider" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="restaurant" EntityType="Self.restaurant" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_city_county" Association="Self.FK_city_county">
+      <End Role="county" EntitySet="county" />
+      <End Role="city" EntitySet="city" />
+    </AssociationSet>
+    <AssociationSet Name="FK_restaurant_city" Association="Self.FK_restaurant_city">
+      <End Role="city" EntitySet="city" />
+      <End Role="restaurant" EntitySet="restaurant" />
+    </AssociationSet>
+    <AssociationSet Name="FK_restaurant_provider" Association="Self.FK_restaurant_provider">
+      <End Role="provider" EntitySet="provider" />
+      <End Role="restaurant" EntitySet="restaurant" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

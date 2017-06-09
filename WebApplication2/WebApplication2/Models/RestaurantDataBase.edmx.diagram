@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c2ced38799c44adb851e6b03d7c59b17" Name="Diagram1">
+        <EntityTypeShape EntityType="dbc77f7eb3a51848168c8ca78d00e74488Model.city" Width="1.5" PointX="3" PointY="1.5" />
+        <EntityTypeShape EntityType="dbc77f7eb3a51848168c8ca78d00e74488Model.county" Width="1.5" PointX="0.75" PointY="1.75" />
+        <EntityTypeShape EntityType="dbc77f7eb3a51848168c8ca78d00e74488Model.provider" Width="1.5" PointX="3" PointY="5.5" />
+        <EntityTypeShape EntityType="dbc77f7eb3a51848168c8ca78d00e74488Model.restaurant" Width="1.5" PointX="5.25" PointY="1" />
+        <AssociationConnector Association="dbc77f7eb3a51848168c8ca78d00e74488Model.FK_city_county" />
+        <AssociationConnector Association="dbc77f7eb3a51848168c8ca78d00e74488Model.FK_restaurant_city" />
+        <AssociationConnector Association="dbc77f7eb3a51848168c8ca78d00e74488Model.FK_restaurant_provider" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

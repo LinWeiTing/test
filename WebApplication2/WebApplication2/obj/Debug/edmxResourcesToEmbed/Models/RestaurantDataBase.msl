@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbc77f7eb3a51848168c8ca78d00e74488ModelStoreContainer" CdmEntityContainer="RestaurantDataBaseEntities">
+    <EntitySetMapping Name="city">
+      <EntityTypeMapping TypeName="dbc77f7eb3a51848168c8ca78d00e74488Model.city">
+        <MappingFragment StoreEntitySet="city">
+          <ScalarProperty Name="countyId" ColumnName="countyId" />
+          <ScalarProperty Name="cityName" ColumnName="cityName" />
+          <ScalarProperty Name="cityId" ColumnName="cityId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="county">
+      <EntityTypeMapping TypeName="dbc77f7eb3a51848168c8ca78d00e74488Model.county">
+        <MappingFragment StoreEntitySet="county">
+          <ScalarProperty Name="countyName" ColumnName="countyName" />
+          <ScalarProperty Name="countyId" ColumnName="countyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="provider">
+      <EntityTypeMapping TypeName="dbc77f7eb3a51848168c8ca78d00e74488Model.provider">
+        <MappingFragment StoreEntitySet="provider">
+          <ScalarProperty Name="providerLineId" ColumnName="providerLineId" />
+          <ScalarProperty Name="providerPhone" ColumnName="providerPhone" />
+          <ScalarProperty Name="providerName" ColumnName="providerName" />
+          <ScalarProperty Name="providerId" ColumnName="providerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="restaurant">
+      <EntityTypeMapping TypeName="dbc77f7eb3a51848168c8ca78d00e74488Model.restaurant">
+        <MappingFragment StoreEntitySet="restaurant">
+          <ScalarProperty Name="providerId" ColumnName="providerId" />
+          <ScalarProperty Name="cityId" ColumnName="cityId" />
+          <ScalarProperty Name="restaurantURL" ColumnName="restaurantURL" />
+          <ScalarProperty Name="restaurantPicture" ColumnName="restaurantPicture" />
+          <ScalarProperty Name="restaurantNote" ColumnName="restaurantNote" />
+          <ScalarProperty Name="restaurantPhone" ColumnName="restaurantPhone" />
+          <ScalarProperty Name="restaurantAddress" ColumnName="restaurantAddress" />
+          <ScalarProperty Name="restaurantName" ColumnName="restaurantName" />
+          <ScalarProperty Name="restaurantId" ColumnName="restaurantId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

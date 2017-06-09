@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbc77f7eb3a51848168c8ca78d00e74488Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="cityId" />
+          </Key>
+          <Property Name="cityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cityName" Type="nvarchar" MaxLength="20" />
+          <Property Name="countyId" Type="int" />
+        </EntityType>
+        <EntityType Name="county">
+          <Key>
+            <PropertyRef Name="countyId" />
+          </Key>
+          <Property Name="countyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="countyName" Type="nchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="provider">
+          <Key>
+            <PropertyRef Name="providerId" />
+          </Key>
+          <Property Name="providerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="providerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="providerPhone" Type="nchar" MaxLength="12" />
+          <Property Name="providerLineId" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="restaurant">
+          <Key>
+            <PropertyRef Name="restaurantId" />
+          </Key>
+          <Property Name="restaurantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="restaurantName" Type="nvarchar" MaxLength="50" />
+          <Property Name="restaurantAddress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="restaurantPhone" Type="nvarchar" MaxLength="12" />
+          <Property Name="restaurantNote" Type="nvarchar(max)" />
+          <Property Name="restaurantPicture" Type="nvarchar(max)" />
+          <Property Name="restaurantURL" Type="nvarchar(max)" />
+          <Property Name="cityId" Type="int" />
+          <Property Name="providerId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_city_county">
+          <End Role="county" Type="Self.county" Multiplicity="0..1" />
+          <End Role="city" Type="Self.city" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="county">
+              <PropertyRef Name="countyId" />
+            </Principal>
+            <Dependent Role="city">
+              <PropertyRef Name="countyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_restaurant_city">
+          <End Role="city" Type="Self.city" Multiplicity="0..1" />
+          <End Role="restaurant" Type="Self.restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="cityId" />
+            </Principal>
+            <Dependent Role="restaurant">
+              <PropertyRef Name="cityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_restaurant_provider">
+          <End Role="provider" Type="Self.provider" Multiplicity="1" />
+          <End Role="restaurant" Type="Self.restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provider">
+              <PropertyRef Name="providerId" />
+            </Principal>
+            <Dependent Role="restaurant">
+              <PropertyRef Name="providerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbc77f7eb3a51848168c8ca78d00e74488ModelStoreContainer">
+          <EntitySet Name="city" EntityType="Self.city" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="county" EntityType="Self.county" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="provider" EntityType="Self.provider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="restaurant" EntityType="Self.restaurant" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_city_county" Association="Self.FK_city_county">
+            <End Role="county" EntitySet="county" />
+            <End Role="city" EntitySet="city" />
+          </AssociationSet>
+          <AssociationSet Name="FK_restaurant_city" Association="Self.FK_restaurant_city">
+            <End Role="city" EntitySet="city" />
+            <End Role="restaurant" EntitySet="restaurant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_restaurant_provider" Association="Self.FK_restaurant_provider">
+            <End Role="provider" EntitySet="provider" />
+            <End Role="restaurant" EntitySet="restaurant" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbc77f7eb3a51848168c8ca78d00e74488Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="RestaurantDataBaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="city" EntityType="dbc77f7eb3a51848168c8ca78d00e74488Model.city" />
+          <EntitySet Name="county" EntityType="dbc77f7eb3a51848168c8ca78d00e74488Model.county" />
+          <EntitySet Name="provider" EntityType="dbc77f7eb3a51848168c8ca78d00e74488Model.provider" />
+          <EntitySet Name="restaurant" EntityType="dbc77f7eb3a51848168c8ca78d00e74488Model.restaurant" />
+          <AssociationSet Name="FK_city_county" Association="dbc77f7eb3a51848168c8ca78d00e74488Model.FK_city_county">
+            <End Role="county" EntitySet="county" />
+            <End Role="city" EntitySet="city" />
+          </AssociationSet>
+          <AssociationSet Name="FK_restaurant_city" Association="dbc77f7eb3a51848168c8ca78d00e74488Model.FK_restaurant_city">
+            <End Role="city" EntitySet="city" />
+            <End Role="restaurant" EntitySet="restaurant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_restaurant_provider" Association="dbc77f7eb3a51848168c8ca78d00e74488Model.FK_restaurant_provider">
+            <End Role="provider" EntitySet="provider" />
+            <End Role="restaurant" EntitySet="restaurant" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="cityId" />
+          </Key>
+          <Property Name="cityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cityName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="countyId" Type="Int32" />
+          <NavigationProperty Name="county" Relationship="dbc77f7eb3a51848168c8ca78d00e74488Model.FK_city_county" FromRole="city" ToRole="county" />
+          <NavigationProperty Name="restaurant" Relationship="dbc77f7eb3a51848168c8ca78d00e74488Model.FK_restaurant_city" FromRole="city" ToRole="restaurant" />
+        </EntityType>
+        <EntityType Name="county">
+          <Key>
+            <PropertyRef Name="countyId" />
+          </Key>
+          <Property Name="countyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="countyName" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="city" Relationship="dbc77f7eb3a51848168c8ca78d00e74488Model.FK_city_county" FromRole="county" ToRole="city" />
+        </EntityType>
+        <EntityType Name="provider">
+          <Key>
+            <PropertyRef Name="providerId" />
+          </Key>
+          <Property Name="providerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="providerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="providerPhone" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+          <Property Name="providerLineId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="restaurant" Relationship="dbc77f7eb3a51848168c8ca78d00e74488Model.FK_restaurant_provider" FromRole="provider" ToRole="restaurant" />
+        </EntityType>
+        <EntityType Name="restaurant">
+          <Key>
+            <PropertyRef Name="restaurantId" />
+          </Key>
+          <Property Name="restaurantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="restaurantName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="restaurantAddress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="restaurantPhone" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="restaurantNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="restaurantPicture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="restaurantURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="cityId" Type="Int32" />
+          <Property Name="providerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="city" Relationship="dbc77f7eb3a51848168c8ca78d00e74488Model.FK_restaurant_city" FromRole="restaurant" ToRole="city" />
+          <NavigationProperty Name="provider" Relationship="dbc77f7eb3a51848168c8ca78d00e74488Model.FK_restaurant_provider" FromRole="restaurant" ToRole="provider" />
+        </EntityType>
+        <Association Name="FK_city_county">
+          <End Type="dbc77f7eb3a51848168c8ca78d00e74488Model.county" Role="county" Multiplicity="0..1" />
+          <End Type="dbc77f7eb3a51848168c8ca78d00e74488Model.city" Role="city" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="county">
+              <PropertyRef Name="countyId" />
+            </Principal>
+            <Dependent Role="city">
+              <PropertyRef Name="countyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_restaurant_city">
+          <End Type="dbc77f7eb3a51848168c8ca78d00e74488Model.city" Role="city" Multiplicity="0..1" />
+          <End Type="dbc77f7eb3a51848168c8ca78d00e74488Model.restaurant" Role="restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="cityId" />
+            </Principal>
+            <Dependent Role="restaurant">
+              <PropertyRef Name="cityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_restaurant_provider">
+          <End Type="dbc77f7eb3a51848168c8ca78d00e74488Model.provider" Role="provider" Multiplicity="1" />
+          <End Type="dbc77f7eb3a51848168c8ca78d00e74488Model.restaurant" Role="restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provider">
+              <PropertyRef Name="providerId" />
+            </Principal>
+            <Dependent Role="restaurant">
+              <PropertyRef Name="providerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbc77f7eb3a51848168c8ca78d00e74488ModelStoreContainer" CdmEntityContainer="RestaurantDataBaseEntities">
+          <EntitySetMapping Name="city">
+            <EntityTypeMapping TypeName="dbc77f7eb3a51848168c8ca78d00e74488Model.city">
+              <MappingFragment StoreEntitySet="city">
+                <ScalarProperty Name="countyId" ColumnName="countyId" />
+                <ScalarProperty Name="cityName" ColumnName="cityName" />
+                <ScalarProperty Name="cityId" ColumnName="cityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="county">
+            <EntityTypeMapping TypeName="dbc77f7eb3a51848168c8ca78d00e74488Model.county">
+              <MappingFragment StoreEntitySet="county">
+                <ScalarProperty Name="countyName" ColumnName="countyName" />
+                <ScalarProperty Name="countyId" ColumnName="countyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="provider">
+            <EntityTypeMapping TypeName="dbc77f7eb3a51848168c8ca78d00e74488Model.provider">
+              <MappingFragment StoreEntitySet="provider">
+                <ScalarProperty Name="providerLineId" ColumnName="providerLineId" />
+                <ScalarProperty Name="providerPhone" ColumnName="providerPhone" />
+                <ScalarProperty Name="providerName" ColumnName="providerName" />
+                <ScalarProperty Name="providerId" ColumnName="providerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="restaurant">
+            <EntityTypeMapping TypeName="dbc77f7eb3a51848168c8ca78d00e74488Model.restaurant">
+              <MappingFragment StoreEntitySet="restaurant">
+                <ScalarProperty Name="providerId" ColumnName="providerId" />
+                <ScalarProperty Name="cityId" ColumnName="cityId" />
+                <ScalarProperty Name="restaurantURL" ColumnName="restaurantURL" />
+                <ScalarProperty Name="restaurantPicture" ColumnName="restaurantPicture" />
+                <ScalarProperty Name="restaurantNote" ColumnName="restaurantNote" />
+                <ScalarProperty Name="restaurantPhone" ColumnName="restaurantPhone" />
+                <ScalarProperty Name="restaurantAddress" ColumnName="restaurantAddress" />
+                <ScalarProperty Name="restaurantName" ColumnName="restaurantName" />
+                <ScalarProperty Name="restaurantId" ColumnName="restaurantId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
