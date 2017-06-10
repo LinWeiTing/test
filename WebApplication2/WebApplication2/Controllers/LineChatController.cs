@@ -43,7 +43,7 @@ namespace WebApplication2.Controllers
                 //回覆用戶
                 isRock.LineBot.Utility.ReplyMessage(ReceivedMessage.events[0].replyToken, Message, ChannelAccessToken);
                 isRock.LineBot.Utility.PushMessage(ReceivedMessage.events[0].source.userId, Message, ChannelAccessToken);
-
+                isRock.LineBot.Utility.PushMessage(ReceivedMessage.events[0].source.userId, Message+"123", ChannelAccessToken);
                 isRock.LineBot.Utility.PushTemplateMessage(ReceivedMessage.events[0].source.userId, ButtonTemplate, ChannelAccessToken);
                 //回覆API OK
                 return Ok();
