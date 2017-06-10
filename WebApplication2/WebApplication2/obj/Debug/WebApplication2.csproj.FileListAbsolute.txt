@@ -114,3 +114,8 @@ D:\專案區\WebApplication2\WebApplication2\bin\zh-Hant\System.Web.WebPages.Dep
 D:\專案區\WebApplication2\WebApplication2\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
 D:\專案區\WebApplication2\WebApplication2\obj\Debug\WebApplication2.pdb
 D:\專案區\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csprojResolveAssemblyReference.cache
+C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\EntityFramework.dll
+C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\EntityFramework.SqlServer.dll
+C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\EntityFramework.xml
+C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\EntityFramework.SqlServer.xml
+C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\zh-Hant\EntityFramework.resources.dll
