@@ -38,12 +38,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="LineBot">
       <HintPath>..\packages\LineBotSDK.0.5.1\lib\net45\LineBot.dll</HintPath>
     </Reference>
@@ -61,8 +55,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -122,60 +114,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\LineChatController.cs" />
-    <Compile Include="Domain\RestaurantInformation.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\city.cs">
-      <DependentUpon>RestaurantDataBase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\county.cs">
-      <DependentUpon>RestaurantDataBase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\provider.cs">
-      <DependentUpon>RestaurantDataBase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\restaurant.cs">
-      <DependentUpon>RestaurantDataBase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RestaurantDataBase.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RestaurantDataBase.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RestaurantDataBase.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RestaurantDataBase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RestaurantDataBase.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RestaurantDataBase.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\LineChatService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <EntityDeploy Include="Models\RestaurantDataBase.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RestaurantDataBase.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\RestaurantDataBase.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RestaurantDataBase.edmx</DependentUpon>
-      <LastGenOutput>RestaurantDataBase.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\RestaurantDataBase.edmx.diagram">
-      <DependentUpon>RestaurantDataBase.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\RestaurantDataBase.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RestaurantDataBase.edmx</DependentUpon>
-      <LastGenOutput>RestaurantDataBase.cs</LastGenOutput>
-    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -185,9 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
