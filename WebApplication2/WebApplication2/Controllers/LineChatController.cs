@@ -31,71 +31,26 @@ namespace WebApplication2.Controllers
 
                 isRock.LineBot.CarouselTemplate carouselTemplate = RestaurantSearch(ReceivedMessage.events[0].source.userId, message, ChannelAccessToken);
 
-                isRock.LineBot.Utility.PushMessage(ReceivedMessage.events[0].source.userId, "您回傳的訊息：" + message, ChannelAccessToken);
-
                 isRock.LineBot.Utility.PushTemplateMessage(ReceivedMessage.events[0].source.userId, carouselTemplate, ChannelAccessToken);
-            
-                //foreach(isRock.LineBot.ButtonsTemplate ButtonTemplate in  ButtonTemplateCol)
-                //{
-                //    isRock.LineBot.Utility.PushTemplateMessage(ReceivedMessage.events[0].source.userId, ButtonTemplate, ChannelAccessToken);
-
-                //}
-                    
+           
             }
             catch (Exception ex)
             {
                 Console.WriteLine("錯誤：" + ex);
             }
 
-            #region MyRegion
-            /////建立actions，作為ButtonTemplate的用戶回覆行為
-            //List<isRock.LineBot.TemplateActionBase> actions = new List<isRock.LineBot.TemplateActionBase>();
-            ////actions.Add(new isRock.LineBot.MessageActon() { label = "標題-文字回覆", text = "回覆文字" });
-            //actions.Add(new isRock.LineBot.UriActon() { label = "標題-開啟URL", uri = new Uri("http://140.124.72.4/professor.php") });
-            ////actions.Add(new isRock.LineBot.PostbackActon() { label = "標題-發生postack", data = "abc=aaa&def=111" });
-
-            ////單一Button Template Message
-            //isRock.LineBot.ButtonsTemplate ButtonTemplate = new isRock.LineBot.ButtonsTemplate()
-            //{
-            //    altText = "安安你好",
-            //    text = "ButtonsTemplate文字訊息",
-            //    title = "ButtonsTemplate標題",
-            //    //設定圖片
-            //    thumbnailImageUrl = new Uri("https://linechart-1.apphb.com/cctuan_photo.jpg"),
-            //    actions = actions //設定回覆動作
-            //};
-
-            //try
-            //{
-            //    //取得 http Post RawData(should be JSON)
-            //    string postData = Request.Content.ReadAsStringAsync().Result;
-            //    //剖析JSON
-            //    var ReceivedMessage = isRock.LineBot.Utility.Parsing(postData);
-            //    //回覆訊息
-            //    string Message;
-            //    Message = "你說了:" + ReceivedMessage.events[0].message.text;
-            //    //回覆用戶
-            //    isRock.LineBot.Utility.ReplyMessage(ReceivedMessage.events[0].replyToken, Message, ChannelAccessToken);
-            //    isRock.LineBot.Utility.PushTemplateMessage(ReceivedMessage.events[0].source.userId, ButtonTemplate, ChannelAccessToken);
-
-
-            //    //回覆API OK
-            //    return Ok();
-            //}
-            //catch (Exception ex)
-            //{
-            //    return Ok();
-            //}
-            #endregion
-         
             return Ok();
         }
 
-
+        /// <summary>
+        /// 查詢餐廳資訊
+        /// </summary>
+        /// <param name="replyToken"></param>
+        /// <param name="Message"></param>
+        /// <param name="ChannelAccessToken"></param>
+        /// <returns></returns>
         private isRock.LineBot.CarouselTemplate RestaurantSearch(string replyToken, string Message, string ChannelAccessToken)
         {
-
-            //List<isRock.LineBot.ButtonsTemplate> result = new List<isRock.LineBot.ButtonsTemplate>();
 
             isRock.LineBot.CarouselTemplate result = new isRock.LineBot.CarouselTemplate();
             try
@@ -103,19 +58,31 @@ namespace WebApplication2.Controllers
 
                 List<RestaurantInformation> resaurantCol = _lineCatService.RestaurantInformationSearch(Message.Trim());
 
-                isRock.LineBot.Utility.PushMessage(replyToken, "查詢到的資料筆數：" + resaurantCol.Count.ToString(), ChannelAccessToken);
+                result.altText = Message + "，查詢到的資料筆數：" + resaurantCol.Count.ToString();
+
+                if(!resaurantCol.Any())
+                {
+                    isRock.LineBot.Utility.PushMessage(replyToken, Message + "，查無資料", ChannelAccessToken);
+                }
 
                 foreach (RestaurantInformation obj in resaurantCol)
                 {
 
-                    isRock.LineBot.Utility.PushMessage(replyToken, obj.restaurantName+"\r\n"+obj.restaurantNote+"\r\n"+obj.countyName+obj.cityName
-                        +obj.restaurantAddress+"\r\n"+obj.restaurantPhone+"\r\n"+obj.providerLineId+" "+obj.providerName
-                        +"\r\n"+obj.restaurantURL, ChannelAccessToken);
+                    isRock.LineBot.Utility.PushMessage(replyToken, 
+                        obj.restaurantName+"\r\n"
+                        +obj.restaurantNote+"\r\n"
+                        +"======================="
+                        + "地址：" + obj.countyName + obj.cityName + obj.restaurantAddress + "\r\n"
+                        + "電話：" + obj.restaurantPhone + "\r\n"
+                        +"分享者ID："+ obj.providerLineId + "\r\n"
+                        + "分享者：" + obj.providerName + "\r\n"
+                        + "傳送門：" + obj.restaurantURL,
+                        ChannelAccessToken);
 
 
                     List<isRock.LineBot.TemplateActionBase> actions = new List<isRock.LineBot.TemplateActionBase>();
 
-                    actions.Add(new isRock.LineBot.UriActon() { label = "餐廳超連結：", uri = new Uri(obj.restaurantURL) });
+                    actions.Add(new isRock.LineBot.UriActon() { label = "餐廳傳送門 <3", uri = new Uri(obj.restaurantURL) });
 
 
                     isRock.LineBot.Column resultObj = new isRock.LineBot.Column()
@@ -125,51 +92,18 @@ namespace WebApplication2.Controllers
                         title = obj.restaurantName,
 
                         //文字
-                        text = obj.restaurantNote + "\r\n" + obj.countyName + obj.cityName
-                        + obj.restaurantAddress + "\r\n" + obj.restaurantPhone + "\r\n" + obj.providerLineId
-                        + " " + obj.providerName,
+                        text = "地址：" + obj.countyName + obj.cityName+  obj.restaurantAddress + "\r\n"
+                        + "電話：" + obj.restaurantPhone,
                         
                         //URL
                         actions = actions,
 
                         //圖片
-                        thumbnailImageUrl = new Uri("https://linechart-1.apphb.com/cctuan_photo.jpg")
+                        thumbnailImageUrl = new Uri("https://linechart-1.apphb.com/Image/" + obj.restaurantPicture)
                     };
 
                     result.columns.Add(resultObj);
                 }
-
-
-                //foreach (RestaurantInformation obj in resaurantCol)
-                //{
-                //    List<isRock.LineBot.TemplateActionBase> actions = new List<isRock.LineBot.TemplateActionBase>();
-
-                //    actions.Add(new isRock.LineBot.UriActon() { label = "餐廳超連結：", uri = new Uri(obj.restaurantURL) });
-
-                //    isRock.LineBot.ButtonsTemplate resultObj = new isRock.LineBot.ButtonsTemplate()
-                //    {
-                //        altText = obj.restaurantName+"\r\n"+obj.restaurantNote+"\r\n"+obj.countyName+obj.cityName
-                //        +obj.restaurantAddress+"\r\n"+obj.restaurantPhone+"\r\n"+obj.providerLineId+" "+obj.providerName
-                //        +"\r\n"+obj.restaurantURL,
-
-                //        //標題
-                //        title=obj.restaurantName,
-
-                //        //文字
-                //        text = obj.restaurantNote + "\r\n" + obj.countyName + obj.cityName
-                //        + obj.restaurantAddress + "\r\n" + obj.restaurantPhone + "\r\n" + obj.providerLineId 
-                //        + " " + obj.providerName,
-
-                //        //URL
-                //        actions = actions,
-
-                        
-                //        thumbnailImageUrl = new Uri("https://linechart-1.apphb.com/cctuan_photo.jpg"),
-                //    };
-                    
-                //    result.Add(resultObj);
-                //}
-              
 
             }
             catch (Exception ex)

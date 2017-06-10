@@ -115,6 +115,11 @@
   <ItemGroup>
     <Content Include="cctuan_photo.jpg" />
     <Content Include="Global.asax" />
+    <Content Include="Image\1.jpg" />
+    <Content Include="Image\3.jpg" />
+    <Content Include="Image\5.jpg" />
+    <Content Include="Image\7.jpg" />
+    <Content Include="Image\8.jpg" />
     <Content Include="index.htm" />
     <Content Include="Web.config" />
   </ItemGroup>
