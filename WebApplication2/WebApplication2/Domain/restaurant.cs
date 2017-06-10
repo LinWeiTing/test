@@ -13,13 +13,8 @@ namespace WebApplication2
         public string restaurantPhone { get; set; }
         public string restaurantNote { get; set; }
         public string restaurantPicture { get; set; }
-        public int providerId { get; set; }
         public string restaurantURL { get; set; }
         public int? cityId { get; set; }
-
-        public  city city { get; set; }
-
-        public  provider provider { get; set; }
-
+        public int providerId { get; set; }
     }
 }

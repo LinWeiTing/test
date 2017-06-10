@@ -9,8 +9,6 @@ namespace WebApplication2
     {
         public int countyId { get; set; }
         public string countyName { get; set; }
-
-
-        public List<city> cityCollection { get; set; }
+    
     }
 }

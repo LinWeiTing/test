@@ -121,15 +121,43 @@
     <Content Include="Image\7.jpg" />
     <Content Include="Image\8.jpg" />
     <Content Include="index.htm" />
+    <Content Include="InsertRestaurantInfo.aspx" />
+    <Content Include="Login.aspx" />
+    <Content Include="LogUp.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\LineChatController.cs" />
+    <Compile Include="Domain\city.cs" />
+    <Compile Include="Domain\county.cs" />
+    <Compile Include="Domain\provider.cs" />
+    <Compile Include="Domain\restaurant.cs" />
     <Compile Include="Domain\RestaurantInformation.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="InsertRestaurantInfo.aspx.cs">
+      <DependentUpon>InsertRestaurantInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InsertRestaurantInfo.aspx.designer.cs">
+      <DependentUpon>InsertRestaurantInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LogUp.aspx.cs">
+      <DependentUpon>LogUp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogUp.aspx.designer.cs">
+      <DependentUpon>LogUp.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\city.cs">
       <DependentUpon>RestaurantDataBase.tt</DependentUpon>
@@ -160,6 +188,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\LineChatService.cs" />
+    <Compile Include="Service\Utility.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
