@@ -26,7 +26,7 @@ namespace WebApplication2.Controllers
                 text = "ButtonsTemplate文字訊息",
                 title = "ButtonsTemplate標題",
                 //設定圖片
-                //thumbnailImageUrl = new Uri("https://linechart-1.apphb.com/cctuan_photo.jpg"),
+                thumbnailImageUrl = new Uri("https://linechart-1.apphb.com/cctuan_photo.jpg"),
                 actions = actions //設定回覆動作
             };
 
@@ -41,6 +41,8 @@ namespace WebApplication2.Controllers
                 Message = "你說了:" + ReceivedMessage.events[0].message.text;
                 //回覆用戶
                 isRock.LineBot.Utility.ReplyMessage(ReceivedMessage.events[0].replyToken, Message, ChannelAccessToken);
+                isRock.LineBot.Utility.ReplyMessage(ReceivedMessage.events[0].replyToken, "加藤英", ChannelAccessToken);
+                isRock.LineBot.Utility.PushTemplateMessage(ReceivedMessage.events[0].source.userId, ButtonTemplate, ChannelAccessToken);
                 isRock.LineBot.Utility.PushTemplateMessage(ReceivedMessage.events[0].source.userId, ButtonTemplate, ChannelAccessToken);
                 //回覆API OK
                 return Ok();

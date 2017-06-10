@@ -30,7 +30,6 @@ D:\開發\C#\ScreenGet\WebApplication2\WebApplication2\bin\zh-Hant\System.Web.Mv
 D:\開發\C#\ScreenGet\WebApplication2\WebApplication2\bin\zh-Hant\System.Net.Http.Formatting.resources.dll
 D:\開發\C#\ScreenGet\WebApplication2\WebApplication2\bin\zh-Hant\System.Web.Http.resources.dll
 D:\開發\C#\ScreenGet\WebApplication2\WebApplication2\bin\zh-Hant\System.Web.Http.WebHost.resources.dll
-D:\開發\C#\ScreenGet\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csprojResolveAssemblyReference.cache
 D:\開發\C#\ScreenGet\WebApplication2\WebApplication2\obj\Debug\WebApplication2.dll
 D:\開發\C#\ScreenGet\WebApplication2\WebApplication2\obj\Debug\WebApplication2.pdb
 D:\開發\C#\ScreenGet\WebApplication2\WebApplication2\bin\LineBot.dll
