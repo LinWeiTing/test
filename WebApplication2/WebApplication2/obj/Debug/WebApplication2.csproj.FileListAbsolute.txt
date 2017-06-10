@@ -72,7 +72,6 @@ C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\zh-Hant\
 C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csprojResolveAssemblyReference.cache
 C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\obj\Debug\WebApplication2.dll
 C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\obj\Debug\WebApplication2.pdb
-D:\專案區\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csprojResolveAssemblyReference.cache
 D:\專案區\WebApplication2\WebApplication2\obj\Debug\WebApplication2.dll
 D:\專案區\WebApplication2\WebApplication2\bin\WebApplication2.dll.config
 D:\專案區\WebApplication2\WebApplication2\bin\WebApplication2.dll

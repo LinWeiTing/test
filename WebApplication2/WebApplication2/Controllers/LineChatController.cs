@@ -6,6 +6,8 @@ using System.Net.Http;
 using System.Web.Http;
 using WebApplication2;
 using WebApplication2.Service;
+using System.Web;
+//using System.Web.Mvc;
 namespace WebApplication2.Controllers
 {
     public class LineChatController : ApiController
@@ -95,52 +97,23 @@ namespace WebApplication2.Controllers
             try
             {
 
-                city cityObj = null;
+                List<RestaurantInformation> resaurantCol = _lineCatService.RestaurantInformationSearch(Message);
 
-                restaurant resaurant = null;
-
-                county countyObj = _lineCatService.GetCounty(Message);
-
-                List<restaurant> resaurantCol = new List<restaurant>();
-
-                if(countyObj != null)
-                {
-                    List<int>cityIdCol= countyObj.cityCollection.Select(x => x.cityId).Distinct().ToList();
-
-                    resaurantCol = _lineCatService.RestaurantSearch(cityIdCol);
-                }
-                else
-                {
-                    cityObj = _lineCatService.GetCity(Message);
-                }
-                
-                if (cityObj != null)
-                {
-                    resaurantCol = _lineCatService.RestaurantSearch(new List<int>() { cityObj.cityId });
-                }
-                else
-                {
-                    resaurant = _lineCatService.GetResaurant(Message);
-                    resaurantCol.Add(resaurant);
-                }
-
-
-
-                foreach(restaurant obj in resaurantCol)
+                foreach (RestaurantInformation obj in resaurantCol)
                 {
                     List<isRock.LineBot.TemplateActionBase> actions = new List<isRock.LineBot.TemplateActionBase>();
 
-                    actions.Add(new isRock.LineBot.UriActon() { label = "標題-開啟URL", uri = new Uri("http://140.124.72.4/professor.php") });
+                    actions.Add(new isRock.LineBot.UriActon() { label = "餐廳超連結：", uri = new Uri(obj.restaurantURL) });
 
                     isRock.LineBot.ButtonsTemplate resultObj = new isRock.LineBot.ButtonsTemplate()
                     {
-                        altText = obj.restaurantName+"\r\n"+obj.restaurantNote+"\r\n"+obj.city.county.countyName+obj.city.cityName
-                        +obj.restaurantAddress+"\r\n"+obj.restaurantPhone+"\r\n"+obj.provider.providerId+" "+obj.provider.providerName
+                        altText = obj.restaurantName+"\r\n"+obj.restaurantNote+"\r\n"+obj.countyName+obj.cityName
+                        +obj.restaurantAddress+"\r\n"+obj.restaurantPhone+"\r\n"+obj.providerLineId+" "+obj.providerName
                         +"\r\n"+obj.restaurantURL,
                         title=obj.restaurantName,
-                        text = obj.restaurantNote + "\r\n" + obj.city.county.countyName + obj.city.cityName
-                        + obj.restaurantAddress + "\r\n" + obj.restaurantPhone + "\r\n" + obj.provider.providerId 
-                        + " " + obj.provider.providerName,
+                        text = obj.restaurantNote + "\r\n" + obj.countyName + obj.cityName
+                        + obj.restaurantAddress + "\r\n" + obj.restaurantPhone + "\r\n" + obj.providerLineId 
+                        + " " + obj.providerName,
                         actions = actions
                     };
                     result.Add(resultObj);
@@ -150,8 +123,8 @@ namespace WebApplication2.Controllers
             }
             catch (Exception)
             {
-                
-                throw;
+              
+              
             }
 
 

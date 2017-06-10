@@ -16,110 +16,34 @@ namespace WebApplication2.Service
 
         }
 
-
-        /// <summary>
-        /// 取得該國家的資訊
-        /// </summary>
-        /// <param name="countyName"></param>
-        /// <returns></returns>
-        public county GetCounty(string countyName)
+        public List<RestaurantInformation> RestaurantInformationSearch(string Token)
         {
             restaurantDB = new RestaurantDataBaseEntities();
-            try
-            {
-                county result;
+          
+                IQueryable<RestaurantInformation> restaurantCol = 
+                           (from coty in restaurantDB.county
+                           join cty in restaurantDB.city on coty.countyId equals cty.countyId
+                           join rst in restaurantDB.restaurant on cty.cityId equals rst.cityId
+                           join pro in restaurantDB.provider on rst.providerId equals pro.providerId
+                           select new RestaurantInformation 
+                           { 
+                               restaurantName = rst.restaurantName,
+                               restaurantNote = rst.restaurantNote,
+                               countyName = coty.countyName,
+                               cityName = cty.cityName,
+                               restaurantAddress = rst.restaurantAddress,
+                               restaurantPhone = rst.restaurantPhone,
+                               providerLineId = pro.providerLineId,
+                               providerName = pro.providerName,
+                               restaurantPicture = rst.restaurantPicture,
+                               restaurantURL = rst.restaurantURL
+                           });
 
-                Models.county entityObj = restaurantDB.county.Where(x => x.countyName == countyName).FirstOrDefault();
-
-                if (entityObj != null)
-                {
-                    entityObj.city = restaurantDB.city.Where(x => x.countyId == entityObj.countyId).ToList();
-
-                }
-                    
-               result = DomainConverter.countyConvert(entityObj);
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("查詢國家失敗：" + ex);
-                return null;
-            }
-            
-        }
-
-
-
-        /// <summary>
-        /// 取得城市資訊
-        /// </summary>
-        /// <param name="Message"></param>
-        /// <returns></returns>
-        public city GetCity(string Message)
-        {
-            restaurantDB = new RestaurantDataBaseEntities();
-            try
-            {
-                city result;
-
-                Models.city entityObj = restaurantDB.city.Where(x => x.cityName == Message).FirstOrDefault();
-
-                result = DomainConverter.cityConvert(entityObj);
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("查詢城市失敗：" + ex);
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// 取得餐廳資訊
-        /// </summary>
-        /// <param name="Message"></param>
-        /// <returns></returns>
-        public restaurant GetResaurant(string Message)
-        {
-            restaurantDB = new RestaurantDataBaseEntities();
-            try
-            {
-                restaurant result;
-
-                Models.restaurant entityObj = restaurantDB.restaurant.Where(x => x.restaurantAddress == Message).FirstOrDefault();
-
-                result = DomainConverter.restaurantConvert(entityObj);
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("查詢餐廳失敗：" + ex);
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// 取得餐廳集合
-        /// </summary>
-        /// <param name="cityIdCol"></param>
-        /// <returns></returns>
-        public List<restaurant> RestaurantSearch(List<int> cityIdCol)
-        {
-            restaurantDB = new RestaurantDataBaseEntities();
-            try
-            {
-                List<restaurant> result;
-
-                List<Models.restaurant> entityList = restaurantDB.restaurant.Where(x => cityIdCol.Contains((int)x.cityId)).ToList();
-
-                result = DomainConverter.restaurantCollectionConvert(entityList);
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("查詢餐廳集合失敗：" + ex);
-                return null;
-            }
+               return restaurantCol.Where(x => x.countyName == Token
+                                    || x.cityName == Token
+                                    || x.restaurantName == Token
+                                    || x.restaurantAddress == Token).ToList();
+         
         }
     }
 }
