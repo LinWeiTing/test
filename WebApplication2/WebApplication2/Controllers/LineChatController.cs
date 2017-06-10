@@ -29,10 +29,14 @@ namespace WebApplication2.Controllers
 
                 string message = ReceivedMessage.events[0].message.text;
 
-               List<isRock.LineBot.ButtonsTemplate> ButtonTemplateCol = RestaurantSearch(message);
+                List<isRock.LineBot.ButtonsTemplate> ButtonTemplateCol = RestaurantSearch(ReceivedMessage.events[0].replyToken, message, ChannelAccessToken);
 
                isRock.LineBot.Utility.ReplyMessage(ReceivedMessage.events[0].replyToken,"您回傳的訊息："+ message, ChannelAccessToken);
 
+               if (!ButtonTemplateCol.Any())
+               {
+                   isRock.LineBot.Utility.ReplyMessage(ReceivedMessage.events[0].replyToken, "查無資料", ChannelAccessToken);
+               }
                 foreach(isRock.LineBot.ButtonsTemplate ButtonTemplate in  ButtonTemplateCol)
                 {
                     isRock.LineBot.Utility.PushTemplateMessage(ReceivedMessage.events[0].source.userId, ButtonTemplate, ChannelAccessToken);
@@ -89,15 +93,17 @@ namespace WebApplication2.Controllers
             return Ok();
         }
 
-        
-        private List<isRock.LineBot.ButtonsTemplate> RestaurantSearch(string Message)
+
+        private List<isRock.LineBot.ButtonsTemplate> RestaurantSearch(string replyToken, string Message, string ChannelAccessToken)
         {
 
             List<isRock.LineBot.ButtonsTemplate> result = new List<isRock.LineBot.ButtonsTemplate>();
             try
             {
 
-                List<RestaurantInformation> resaurantCol = _lineCatService.RestaurantInformationSearch(Message);
+                List<RestaurantInformation> resaurantCol = _lineCatService.RestaurantInformationSearch(Message.Trim());
+
+                isRock.LineBot.Utility.ReplyMessage(replyToken, "查詢到的資料筆數：" + resaurantCol.Count.ToString(), ChannelAccessToken);
 
                 foreach (RestaurantInformation obj in resaurantCol)
                 {
@@ -121,10 +127,10 @@ namespace WebApplication2.Controllers
               
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-              
-              
+
+                isRock.LineBot.Utility.ReplyMessage(replyToken, "餐廳查詢失敗：" +ex, ChannelAccessToken);
             }
 
 

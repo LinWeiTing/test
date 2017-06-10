@@ -113,3 +113,4 @@ D:\專案區\WebApplication2\WebApplication2\bin\zh-Hant\System.Web.WebPages.res
 D:\專案區\WebApplication2\WebApplication2\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
 D:\專案區\WebApplication2\WebApplication2\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
 D:\專案區\WebApplication2\WebApplication2\obj\Debug\WebApplication2.pdb
+D:\專案區\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csprojResolveAssemblyReference.cache
