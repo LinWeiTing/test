@@ -34,3 +34,4 @@ D:\開發\C#\ScreenGet\WebApplication2\WebApplication2\obj\Debug\WebApplication2
 D:\開發\C#\ScreenGet\WebApplication2\WebApplication2\obj\Debug\WebApplication2.pdb
 D:\開發\C#\ScreenGet\WebApplication2\WebApplication2\bin\LineBot.dll
 D:\開發\C#\ScreenGet\WebApplication2\WebApplication2\bin\Microsoft.Web.Infrastructure.dll
+D:\開發\C#\ScreenGet\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csprojResolveAssemblyReference.cache
