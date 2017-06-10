@@ -102,7 +102,7 @@ namespace WebApplication2
 
             String fileName = txtPhone.Text + Path.GetExtension(FileUpload1.FileName);
 
-            String savePath = Server.MapPath("~/Image/");
+            String savePath = Server.MapPath("~/App_Data/");
 
             String saveResult = savePath + fileName;
             //-- 重點！！必須包含 Server端的「目錄」與「檔名」，才能使用 .SaveAs()方法！
