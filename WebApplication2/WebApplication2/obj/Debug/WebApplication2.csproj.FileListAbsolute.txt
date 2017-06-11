@@ -118,3 +118,4 @@ C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\EntityFr
 C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\EntityFramework.xml
 C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\EntityFramework.SqlServer.xml
 C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\zh-Hant\EntityFramework.resources.dll
+C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csprojResolveAssemblyReference.cache

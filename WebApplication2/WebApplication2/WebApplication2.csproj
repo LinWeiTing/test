@@ -119,9 +119,6 @@
     <Content Include="Image\0225522205.jpg" />
     <Content Include="Image\039373885.jpg" />
     <Content Include="Image\0918717288.jpg" />
-    <Content Include="Image\0922158009.jpg" />
-    <Content Include="Image\0956768264.jpg" />
-    <Content Include="Image\0989778882.jpg" />
     <Content Include="index.aspx" />
     <Content Include="index.htm" />
     <Content Include="InsertRestaurantInfo.aspx" />
