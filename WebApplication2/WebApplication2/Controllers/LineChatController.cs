@@ -99,7 +99,7 @@ namespace WebApplication2.Controllers
                         actions = actions,
 
                         //圖片
-                        thumbnailImageUrl = new Uri("https://linechart-1.apphb.com/App_Data/" + obj.restaurantPicture)
+                        thumbnailImageUrl = new Uri("https://linechart-1.apphb.com/Image/" + obj.restaurantPicture)
                     };
 
                     result.columns.Add(resultObj);

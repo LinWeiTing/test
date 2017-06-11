@@ -200,7 +200,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <EntityDeploy Include="Models\RestaurantDataBase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>RestaurantDataBase.Designer.cs</LastGenOutput>

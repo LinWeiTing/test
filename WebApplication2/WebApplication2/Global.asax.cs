@@ -18,7 +18,6 @@ namespace WebApplication2
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            Response.Redirect("~/Login.aspx");
         }
     }
 }
