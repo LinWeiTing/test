@@ -115,11 +115,13 @@
   <ItemGroup>
     <Content Include="cctuan_photo.jpg" />
     <Content Include="Global.asax" />
-    <Content Include="Image\1.jpg" />
-    <Content Include="Image\3.jpg" />
-    <Content Include="Image\5.jpg" />
-    <Content Include="Image\7.jpg" />
-    <Content Include="Image\8.jpg" />
+    <Content Include="Image\0225218159.jpg" />
+    <Content Include="Image\0225522205.jpg" />
+    <Content Include="Image\039373885.jpg" />
+    <Content Include="Image\0918717288.jpg" />
+    <Content Include="Image\0922158009.jpg.jpg" />
+    <Content Include="Image\0956768264.jpg" />
+    <Content Include="Image\0989778882.jpg" />
     <Content Include="index.aspx" />
     <Content Include="index.htm" />
     <Content Include="InsertRestaurantInfo.aspx" />
