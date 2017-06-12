@@ -127,3 +127,4 @@ C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\Common.L
 C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\Common.Logging.Core.xml
 C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\Quartz.pdb
 C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\Quartz.xml
+C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csprojResolveAssemblyReference.cache

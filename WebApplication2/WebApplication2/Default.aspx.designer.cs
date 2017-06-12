@@ -11,7 +11,7 @@ namespace WebApplication2
 {
 
 
-    public partial class index
+    public partial class Default
     {
 
         /// <summary>

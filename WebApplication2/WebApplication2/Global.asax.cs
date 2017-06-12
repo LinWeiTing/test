@@ -23,7 +23,8 @@ namespace WebApplication2
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-
+    
+        
             var schedulerFactory = new StdSchedulerFactory();
             var scheduler = schedulerFactory.GetScheduler();
 

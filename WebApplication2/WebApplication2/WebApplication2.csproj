@@ -123,23 +123,38 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="cctuan_photo.jpg" />
+    <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Image\0225218159.jpg" />
     <Content Include="Image\0225522205.jpg" />
     <Content Include="Image\039373885.jpg" />
     <Content Include="Image\0918717288.jpg" />
-    <Content Include="index.aspx" />
-    <Content Include="index.htm" />
     <Content Include="InsertRestaurantInfo.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="LogUp.aspx" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="twst.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LineChatController.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Domain\city.cs" />
     <Compile Include="Domain\county.cs" />
     <Compile Include="Domain\provider.cs" />
@@ -147,13 +162,6 @@
     <Compile Include="Domain\RestaurantInformation.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="index.aspx.cs">
-      <DependentUpon>index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="index.aspx.designer.cs">
-      <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="InsertRestaurantInfo.aspx.cs">
       <DependentUpon>InsertRestaurantInfo.aspx</DependentUpon>
@@ -240,6 +248,10 @@
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
