@@ -76,6 +76,7 @@ namespace WebApplication2.Service
             }
             else
             {
+                Models.provider entityObj = restaurantDB.provider.Where(x => x.providerPhone == loginID && x.providerLineId == loginPwd).FirstOrDefault();
                 return restaurantDB.provider.Where(x => x.providerPhone == loginID).Any();
             }
             

@@ -14,7 +14,7 @@ namespace WebApplication2
         protected void Page_Load(object sender, EventArgs e)
         {
             _lineChatService = new LineChatService();
-            if (_lineChatService.CheckProvider("0952259389", "sp036239", true))
+            if (_lineChatService.CheckProvider("0952259389", "sp036239", false))
             {
             }
             else 
