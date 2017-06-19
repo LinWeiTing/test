@@ -69,6 +69,7 @@ C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\zh-Hant\
 C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\zh-Hant\System.Web.WebPages.resources.dll
 C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
 C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
+C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csprojResolveAssemblyReference.cache
 C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\obj\Debug\WebApplication2.dll
 C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\obj\Debug\WebApplication2.pdb
 D:\專案區\WebApplication2\WebApplication2\obj\Debug\WebApplication2.dll
@@ -113,18 +114,3 @@ D:\專案區\WebApplication2\WebApplication2\bin\zh-Hant\System.Web.WebPages.Dep
 D:\專案區\WebApplication2\WebApplication2\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
 D:\專案區\WebApplication2\WebApplication2\obj\Debug\WebApplication2.pdb
 D:\專案區\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csprojResolveAssemblyReference.cache
-C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\EntityFramework.dll
-C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\EntityFramework.SqlServer.dll
-C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\EntityFramework.xml
-C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\EntityFramework.SqlServer.xml
-C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\zh-Hant\EntityFramework.resources.dll
-C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\Common.Logging.Core.dll
-C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\Common.Logging.dll
-C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\Quartz.dll
-C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\Common.Logging.pdb
-C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\Common.Logging.xml
-C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\Common.Logging.Core.pdb
-C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\Common.Logging.Core.xml
-C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\Quartz.pdb
-C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\bin\Quartz.xml
-C:\Users\Mike\Documents\GitHub\test\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csprojResolveAssemblyReference.cache
