@@ -125,10 +125,15 @@
     <Content Include="cctuan_photo.jpg" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Image\0222486518.jpg" />
     <Content Include="Image\0225218159.jpg" />
     <Content Include="Image\0225522205.jpg" />
+    <Content Include="Image\0229268889.jpg" />
+    <Content Include="Image\0289250709.jpg" />
     <Content Include="Image\039373885.jpg" />
     <Content Include="Image\0918717288.jpg" />
+    <Content Include="Image\0956768264.jpg" />
+    <Content Include="Image\0989778882.jpg" />
     <Content Include="InsertRestaurantInfo.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="LogUp.aspx" />
