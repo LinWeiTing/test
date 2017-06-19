@@ -27,6 +27,21 @@ namespace WebApplication2.Controllers
                 //剖析JSON
                 var ReceivedMessage = isRock.LineBot.Utility.Parsing(postData);
 
+                #region 圖片取得
+                if (ReceivedMessage.events.FirstOrDefault().type == "message" &&
+                   ReceivedMessage.events.FirstOrDefault().message.type.Trim().ToLower() == "image")
+                {
+                    //取得contentid
+                    var LineContentID = ReceivedMessage.events.FirstOrDefault().message.id.ToString();
+                    var filebody = isRock.LineBot.Utility.GetUserUploadedContent(LineContentID, ChannelAccessToken);
+                    //建立唯一名稱
+                    var filename = "https://linechart-1.apphb.com/Image/" + "MyImage.png";
+                    var path = System.Web.HttpContext.Current.Request.MapPath(filename);
+                    //save
+                    System.IO.File.WriteAllBytes(path, filebody);
+                }
+                #endregion
+
                 string message = ReceivedMessage.events[0].message.text;
 
                 isRock.LineBot.CarouselTemplate carouselTemplate = RestaurantSearch(ReceivedMessage.events[0].source.userId, message, ChannelAccessToken);
