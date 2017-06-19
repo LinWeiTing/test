@@ -35,7 +35,7 @@ namespace WebApplication2.Controllers
                     var LineContentID = ReceivedMessage.events.FirstOrDefault().message.id.ToString();
                     var filebody = isRock.LineBot.Utility.GetUserUploadedContent(LineContentID, ChannelAccessToken);
                     //建立唯一名稱
-                    var filename = "https://linechart-1.apphb.com/Image/" + "MyImage.png";
+                    var filename = "/Image/" + "MyImage.png";
                     var path = System.Web.HttpContext.Current.Request.MapPath(filename);
                     //save
                     System.IO.File.WriteAllBytes(path, filebody);
