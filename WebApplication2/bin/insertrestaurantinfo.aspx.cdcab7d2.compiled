@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/InsertRestaurantInfo.aspx" hash="76afc6c6b" filehash="fffff864f6629ee0" flags="110000" assembly="App_Web_utkgk0lc" type="ASP.insertrestaurantinfo_aspx">
+    <filedeps>
+        <filedep name="/InsertRestaurantInfo.aspx" />
+    </filedeps>
+</preserve>

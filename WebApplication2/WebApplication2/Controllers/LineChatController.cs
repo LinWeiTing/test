@@ -28,11 +28,8 @@ namespace WebApplication2.Controllers
                 var ReceivedMessage = isRock.LineBot.Utility.Parsing(postData);
 
                 string message = ReceivedMessage.events[0].message.text;
-                string msg = ReceivedMessage.events[0].postback.data;
-                isRock.LineBot.CarouselTemplate carouselTemplate = RestaurantSearch(ReceivedMessage.events[0].source.userId, msg, ChannelAccessToken);
 
-
-                //isRock.LineBot.CarouselTemplate carouselTemplate = RestaurantSearch(ReceivedMessage.events[0].source.userId, message, ChannelAccessToken);
+                isRock.LineBot.CarouselTemplate carouselTemplate = RestaurantSearch(ReceivedMessage.events[0].source.userId, message, ChannelAccessToken);
 
                 isRock.LineBot.Utility.PushTemplateMessage(ReceivedMessage.events[0].source.userId, carouselTemplate, ChannelAccessToken);
            
